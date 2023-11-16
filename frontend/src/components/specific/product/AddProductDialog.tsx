@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -48,7 +47,7 @@ const AddProductDialog = ({ children }: Props) => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit() {
     toast({
       title: "Félicitation",
       description: "Le produit a bien été ajouté",
