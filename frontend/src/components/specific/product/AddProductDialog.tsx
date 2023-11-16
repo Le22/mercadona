@@ -141,7 +141,9 @@ const AddProductDialog = ({ children }: Props) => {
                   )}
                 />
 
-                <Button type="submit">Ajouter le produit</Button>
+                <Button type="submit" disabled={!form.formState.isValid}>
+                  Ajouter le produit
+                </Button>
               </form>
             </Form>
           </DialogDescription>

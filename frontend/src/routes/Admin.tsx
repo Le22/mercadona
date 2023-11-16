@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import products from "../products.json";
 import AddProductDialog from "@/components/specific/product/AddProductDialog";
+import AddPromotionDialog from "@/components/specific/promotion/AddPromotionDialog";
 
 const Admin = () => {
   return (
@@ -62,9 +63,11 @@ const Admin = () => {
                     {product.price} €
                   </TableCell>
                   <TableCell className="text-right">
-                    <Button size={"sm"} variant={"outline"}>
-                      Ajouter une promotion
-                    </Button>
+                    <AddPromotionDialog>
+                      <Button size={"sm"} variant={"outline"}>
+                        Ajouter une promotion
+                      </Button>
+                    </AddPromotionDialog>
                   </TableCell>
                 </TableRow>
               );
