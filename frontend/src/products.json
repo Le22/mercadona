@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "label": "Jean",
+    "description": "C'est un pantalon jean très cool et long pour les cheveux longs et fins et les cheveux courts et fins et long pour les cheveux long et fins et long pour les cheveux",
+    "price": 50,
+    "image": "/product.jpg",
+    "category": "Vetement",
+    "isAdvertised": false
+  },
+  {
+    "id": "2",
+    "label": "Chemise",
+    "description": "Chemise décontractée en coton pour hommes.",
+    "price": 30,
+    "image": "/product.jpg",
+    "category": "Vetement",
+    "isAdvertised": true
+  },
+  {
+    "id": "3",
+    "label": "Basketball",
+    "description": "Basketball officiel de la NBA, taille standard et poids équilibré.",
+    "price": 25,
+    "image": "/product.jpg",
+    "category": "Sport",
+    "isAdvertised": false
+  },
+  {
+    "id": "4",
+    "label": "Montre",
+    "description": "Montre élégante avec un bracelet en cuir.",
+    "price": 80,
+    "image": "/product.jpg",
+    "category": "Accessoire",
+    "isAdvertised": true
+  },
+  {
+    "id": "5",
+    "label": "Ordinateur Portable",
+    "description": "Ordinateur portable léger avec une puissance de traitement rapide.",
+    "price": 1200,
+    "image": "/product.jpg",
+    "category": "Électronique",
+    "isAdvertised": false
+  },
+  {
+    "id": "6",
+    "label": "Livre",
+    "description": "Best-seller du New York Times, une lecture captivante pour tous les amateurs de fiction.",
+    "price": 15,
+    "image": "/product.jpg",
+    "category": "Littérature",
+    "isAdvertised": false
+  },
+  {
+    "id": "7",
+    "label": "Casque Audio",
+    "description": "Casque audio sans fil avec une qualité sonore exceptionnelle.",
+    "price": 100,
+    "image": "/product.jpg",
+    "category": "Électronique",
+    "isAdvertised": true
+  },
+  {
+    "id": "8",
+    "label": "Sac à Dos",
+    "description": "Sac à dos résistant à l'eau avec de multiples compartiments.",
+    "price": 40,
+    "image": "/product.jpg",
+    "category": "Accessoire",
+    "isAdvertised": false
+  },
+  {
+    "id": "9",
+    "label": "Chaussures de Running",
+    "description": "Chaussures de running légères et respirantes pour une expérience de course confortable.",
+    "price": 60,
+    "image": "/product.jpg",
+    "category": "Sport",
+    "isAdvertised": true
+  },
+  {
+    "id": "10",
+    "label": "Téléviseur 4K",
+    "description": "Téléviseur 4K avec une qualité d'image exceptionnelle pour une expérience cinématographique à domicile.",
+    "price": 800,
+    "image": "/product.jpg",
+    "category": "Électronique",
+    "isAdvertised": false
+  }
+]
