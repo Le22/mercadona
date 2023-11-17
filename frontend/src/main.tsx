@@ -6,6 +6,9 @@ import Home from "./routes/Home";
 import Catalog from "./routes/Catalog";
 import Admin from "./routes/Admin";
 import { Toaster } from "./components/ui/toaster";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -24,7 +27,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Toaster />
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <Toaster />
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

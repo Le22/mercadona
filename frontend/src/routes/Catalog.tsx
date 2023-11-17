@@ -1,20 +1,25 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import products from "../products.json";
 import { useState } from "react";
 import Header from "@/components/generic/Header";
 import Layout from "@/components/generic/Layout";
 import Title from "@/components/generic/Title";
+import { useQueryProduct } from "@/hook/useQueryProduct";
 
 const Catalog = () => {
   const [categorySelect, setCategorySelect] = useState<string>("Tout");
+  const { data: products, isLoading: isProductLoading } = useQueryProduct();
+
+  if (isProductLoading) {
+    return <div>Loading...</div>;
+  }
 
   const allCategories = () => {
     const categorys = new Set<string>();
 
     categorys.add("Tout");
 
-    products.forEach((product) => {
+    products?.forEach((product) => {
       categorys.add(product.category);
     });
 
@@ -26,7 +31,7 @@ const Catalog = () => {
       return products;
     }
 
-    return products.filter((product) => product.category === categorySelect);
+    return products?.filter((product) => product.category === categorySelect);
   };
 
   return (
@@ -34,7 +39,7 @@ const Catalog = () => {
       <Header />
       <Layout>
         <Title>Catalogue</Title>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center flex-wrap">
           {allCategories().map((category) => {
             return (
               <Button
@@ -48,8 +53,8 @@ const Catalog = () => {
             );
           })}
         </div>
-        <div className="grid grid-cols-4 gap-4 gap-y-10">
-          {filteredProducts().map((product) => {
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 gap-y-10">
+          {filteredProducts()?.map((product) => {
             return (
               <div className="flex flex-col gap-4" key={product.id}>
                 <div className="relative h-[240px] w-auto">

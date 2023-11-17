@@ -11,11 +11,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import products from "../products.json";
 import AddProductDialog from "@/components/specific/product/AddProductDialog";
 import AddPromotionDialog from "@/components/specific/promotion/AddPromotionDialog";
+import { useQueryProduct } from "@/hook/useQueryProduct";
 
 const Admin = () => {
+  const { data: products, isLoading: isProductLoading } = useQueryProduct();
+
+  if (isProductLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Header />
@@ -42,14 +47,14 @@ const Admin = () => {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {products.map((product) => {
+            {products?.map((product) => {
               return (
                 <TableRow key={product.id}>
                   <TableCell>
                     <img
                       src={product.image}
                       alt={product.label}
-                      className="w-full h-full object-cover rounded w-[100px] h-auto"
+                      className=" object-cover rounded w-[100px] h-auto"
                     />
                   </TableCell>
                   <TableCell className="font-bold">{product.label}</TableCell>

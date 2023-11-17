@@ -19,22 +19,30 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/components/ui/use-toast";
+import { useMutationCreateProduct } from "@/hook/useMutationCreateProduct";
+import { useState } from "react";
 
 interface Props {
   children: React.ReactNode;
 }
+
+export const FileSchema = z.object({
+  name: z.string(),
+  size: z.number(),
+  type: z.string(),
+});
 
 const formSchema = z.object({
   label: z.string().min(2).max(100),
   category: z.string().min(2).max(100),
   description: z.string().min(2).max(1000),
   price: z.string(),
-  image: z.string(),
 });
 
 const AddProductDialog = ({ children }: Props) => {
-  const { toast } = useToast();
+  const createProductMutation = useMutationCreateProduct();
+
+  const [image, setImage] = useState<File | undefined>(undefined);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -43,14 +51,16 @@ const AddProductDialog = ({ children }: Props) => {
       category: "",
       description: "",
       price: "0",
-      image: "",
     },
   });
 
-  function onSubmit() {
-    toast({
-      title: "Félicitation",
-      description: "Le produit a bien été ajouté",
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    createProductMutation.mutate({
+      label: data.label,
+      category: data.category,
+      description: data.description,
+      price: Number(data.price),
+      image: image,
     });
   }
 
@@ -105,22 +115,10 @@ const AddProductDialog = ({ children }: Props) => {
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="image"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Image</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="file"
-                          placeholder="A quoi ressemble le produit"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                <Input
+                  type="file"
+                  placeholder="A quoi ressemble le produit"
+                  onChange={(e) => setImage(e.target.files?.[0])}
                 />
                 <FormField
                   control={form.control}
